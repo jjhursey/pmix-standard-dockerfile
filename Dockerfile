@@ -12,3 +12,6 @@ RUN apt-get clean
 RUN groupadd -r pmixer && useradd --no-log-init -r -m -b /home -g pmixer pmixer
 USER pmixer
 WORKDIR /home/pmixer
+
+RUN mkdir /home/pmixer/bin
+COPY build-std.sh /home/pmixer/bin/
