@@ -14,4 +14,4 @@ USER pmixer
 WORKDIR /home/pmixer
 
 RUN mkdir /home/pmixer/bin
-COPY build-std.sh /home/pmixer/bin/
+COPY build-std.sh build-gov.sh /home/pmixer/bin/

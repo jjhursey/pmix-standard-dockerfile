@@ -17,27 +17,27 @@ else
 fi
 
 if [ -z "$3" ] ; then
-    REPO="https://github.com/pmix/pmix-standard.git"
+    REPO="https://github.com/pmix/governance.git"
 else
     REPO=$3
 fi
 
 if [ -z "$4" ] ; then
-    OUT_FNAME="pmix-standard-"${BRANCH}".pdf"
+    OUT_FNAME="pmix_governance-"${BRANCH}"-"`date +"%F"`".pdf"
 else
     OUT_FNAME=$4
 fi
 
 
-if [ -d "pmix-standard" ] ; then
+if [ -d "governance" ] ; then
     echo "--------- Remove old directory"
-    rm -rf pmix-standard
+    rm -rf governance
 fi
 
 
 if [[ "$REPO" = /* ]] ; then
     echo "--------- Copy working directory ($BRANCH)"
-    cp -R $REPO pmix-standard
+    cp -R $REPO governance
 else
     echo "--------- Clone the branch ($BRANCH)"
     echo git clone -b $BRANCH $REPO
@@ -45,12 +45,12 @@ else
 fi
 
 echo "--------- Build"
-cd pmix-standard
+cd governance
 make clean
 make
 
 
 if [ -d "$TARGETDIR" ] ; then
     echo "--------- Copy out the pdf"
-    cp pmix-standard.pdf ${TARGETDIR}/${OUT_FNAME}
+    cp pmix_governance.pdf ${TARGETDIR}/${OUT_FNAME}
 fi
