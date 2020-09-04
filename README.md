@@ -38,16 +38,22 @@ REPO="https://github.com/myuser/pmix-standard.git"
 docker run --rm -v ~/pmix-standard-docs/:/home/pmixer/doc $CONTAINER ./bin/build-std.sh /home/pmixer/doc $BRANCH $REPO
 ```
 
+### Your local directory
+
+```
+CONTAINER=jjhursey/pmix-standard
+docker run --rm -v $PWD:/home/pmixer/doc $CONTAINER ./bin/build-std.sh /home/pmixer/doc inplace
+```
+
 ### Building the container
 
 ```
-docker build -t pmix-standard .
+docker build -t ${USER}/pmix-standard .
 ```
 
 ### Publishing the container image
 
 ```
 docker login
-docker tag pmix-standard ${USER}/pmix-standard:latest
 docker push ${USER}/pmix-standard:latest
 ```
