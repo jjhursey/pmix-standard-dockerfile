@@ -13,8 +13,8 @@ RUN apt-get update \
         texlive-science \
         python3-pip \
         python-is-python3 \
- && apt-get clean \
- && pip3 install Pygments
+ && apt-get clean
+RUN pip3 --no-cache-dir install Pygments
 
 # Add a user, so we don't run as root
 RUN groupadd -r pmixer && useradd --no-log-init -r -m -b /home -g pmixer pmixer
